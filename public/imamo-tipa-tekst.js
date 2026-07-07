@@ -13,7 +13,7 @@ window.IMAMO_TEKST = {
     {
       name: "Tipkinja za marketing",
       crime: "Specijalnost: nagli rast dosega",
-      bio: "Zna zašto ti nitko ne lajka objave — i zna kako to popraviti. Govori fluentno \"algoritam\", a budžet za oglase troši kao da je njezin. Pažljivo, dakle."
+      bio: "Zna zašto ti nitko ne lajka objave - i zna kako to popraviti. Govori fluentno \"algoritam\", a budžet za oglase troši kao da je njezin. Pažljivo, dakle."
     },
     {
       name: "Tipkinja za društvene mreže",
@@ -44,7 +44,7 @@ window.IMAMO_TEKST = {
 
   /* ---------- kako to ide (3 koraka) ---------- */
   proces: [
-    { naslov: "Javiš se",       tekst: "Mail, poziv, DM, dimni signal. Sve prolazi. Opišeš problem svojim riječima — mi prenosimo tip/kinji." },
+    { naslov: "Javiš se",       tekst: "Mail, poziv, DM, dimni signal. Sve prolazi. Opišeš problem svojim riječima - mi prenosimo tip/kinji." },
     { naslov: "Zadužimo tipa",  tekst: "Ili tipkinju. Ili više njih odjednom, ovisno o projektu. Dobiješ plan, rok i cijenu bez sitnih slova." },
     { naslov: "Tip riješi",     tekst: "Ti unaprijediš poslovanje. Mi te dodamo na listu zadovoljnih klijenata. Jednostavno." }
   ],
