@@ -42,12 +42,12 @@
   /* ---------- header ---------- */
   header{
     display:flex;justify-content:space-between;align-items:center;
-    padding:18px 5vw;
+    padding:14px 5vw;
     border-bottom:1px solid var(--hairline);
     position:sticky;top:0;background:var(--paper);z-index:50;
   }
   .logo{
-    font-family:var(--display);font-size:1.3rem;font-weight:500;
+    font-family:var(--display);font-size:1.5rem;font-weight:500;
     letter-spacing:.12em;text-transform:uppercase;
     text-decoration:none;color:var(--navy);display:inline-block;
   }
@@ -56,8 +56,8 @@
     color:var(--gold);letter-spacing:.15em;
   }
   nav{
-    display:flex;gap:30px;
-    font-family:var(--utility);font-size:.75rem;
+    display:flex;gap:22px;
+    font-family:var(--utility);font-size:.92rem;
     letter-spacing:.18em;text-transform:uppercase;
   }
   nav a{text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;color:var(--navy)}
@@ -94,7 +94,7 @@
   .hero .eyebrow{margin-top:0}
   .hero .cta{
     display:inline-block;margin-top:44px;
-    font-family:var(--utility);font-size:.75rem;
+    font-family:var(--utility);font-size:.92rem;
     letter-spacing:.2em;text-transform:uppercase;
     color:var(--navy);text-decoration:none;
     border:1px solid var(--navy);
@@ -200,7 +200,7 @@
   .contact p{margin:24px auto 0;max-width:46ch;color:#C6C2B4}
   .contact .cta{
     display:inline-block;margin-top:46px;
-    font-family:var(--utility);font-size:.75rem;
+    font-family:var(--utility);font-size:.92rem;
     letter-spacing:.2em;text-transform:uppercase;
     color:var(--navy);background:var(--gold);
     text-decoration:none;padding:16px 40px;
@@ -220,12 +220,12 @@
   }
 
   @media(max-width:600px){
-    header{flex-wrap:wrap;gap:6px}
+    header{gap:6px}
     .hero{padding:12px 5vw 8vh}
     .partners{padding:70px 5vw}
     .process{padding:70px 5vw}
     .contact{padding:80px 5vw}
-    nav{gap:20px;flex-wrap:wrap}
+    nav{gap:14px;font-size:.82rem}
   }
 </style>
 <script src="/silhouettes.js"></script>
@@ -315,7 +315,7 @@ window.IMAMO_TEKST = {
 <body>
 
 <header>
-  <a class="logo" href="#">Imamo tipa<sup> *i tipkinje</sup></a>
+  <a class="logo" href="/">Imamo tipa<sup> *i tipkinje</sup></a>
   <nav>
     <a href="#postava">Postava</a>
     <a href="#proces">Kako radimo</a>
