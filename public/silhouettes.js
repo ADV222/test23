@@ -19,8 +19,8 @@ window.IMAMO_SILHOUETTES = {
     viewBox: "0 12 130 250",
     body: `<circle cx="60" cy="52" r="15"/>
       <path d="M44,70 Q44,104 40,136 L82,136 Q78,104 78,70 Z"/>
-      <rect x="48" y="130" width="12" height="80" rx="6"/>
-      <rect x="62" y="130" width="12" height="80" rx="6"/>
+      <rect x="48" y="130" width="12" height="90" rx="6"/>
+      <rect x="62" y="130" width="12" height="90" rx="6"/>
       <rect x="68" y="60" width="11" height="42" rx="5" transform="rotate(-42 74 81)"/>
       <polygon points="90,32 114,20 114,54 90,44"/>
       <rect x="84" y="34" width="8" height="10" rx="2"/>`
@@ -31,8 +31,8 @@ window.IMAMO_SILHOUETTES = {
     viewBox: "0 12 130 250",
     body: `<circle cx="58" cy="52" r="15"/>
       <path d="M42,70 Q42,104 38,136 L80,136 Q76,104 76,70 Z"/>
-      <rect x="48" y="130" width="12" height="80" rx="6"/>
-      <rect x="62" y="130" width="12" height="80" rx="6"/>
+      <rect x="48" y="130" width="12" height="90" rx="6"/>
+      <rect x="62" y="130" width="12" height="90" rx="6"/>
       <rect x="70" y="64" width="10" height="40" rx="5" transform="rotate(38 76 104)"/>
       <rect x="94" y="34" width="19" height="32" rx="4"/>
       <circle cx="99" cy="20" r="4"/>
@@ -46,26 +46,27 @@ window.IMAMO_SILHOUETTES = {
     body: `<circle cx="63" cy="56" r="14"/>
       <circle cx="63" cy="38" r="8"/>
       <path d="M48,74 Q48,106 44,136 L84,136 Q80,106 80,74 Z"/>
-      <rect x="52" y="130" width="11" height="78" rx="5"/>
-      <rect x="67" y="130" width="11" height="78" rx="5"/>
+      <rect x="52" y="130" width="11" height="90" rx="5"/>
+      <rect x="67" y="130" width="11" height="90" rx="5"/>
+      <rect x="70" y="94" width="22" height="28" rx="3" transform="rotate(12 81 108)"/>
+      <rect x="72" y="78" width="9" height="28" rx="4" transform="rotate(-28 77 92)"/>`
+  },
+  
+   web: {
+   gender: "f",
+    viewBox: "0 12 130 250",
+    body: `<circle cx="63" cy="56" r="14"/>
+      <circle cx="63" cy="38" r="8"/>
+      <path d="M48,74 Q48,106 44,136 L84,136 Q80,106 80,74 Z"/>
+      <rect x="52" y="130" width="11" height="90" rx="5"/>
+      <rect x="67" y="130" width="11" height="90" rx="5"/>
       <rect x="70" y="94" width="22" height="28" rx="3" transform="rotate(12 81 108)"/>
       <rect x="72" y="78" width="9" height="28" rx="4" transform="rotate(-28 77 92)"/>`
   },
 
   // ===== MUŠKI LIKOVI (pravokutni torso, viši — standardni viewBox) =====
 
-  web: {
-    gender: "m",
-    viewBox: "0 0 130 250",
-    body: `<circle cx="62" cy="36" r="17"/>
-      <circle cx="80" cy="48" r="8"/>
-      <circle cx="86" cy="62" r="6"/>
-      <rect x="44" y="54" width="38" height="78" rx="15"/>
-      <rect x="48" y="128" width="13" height="92" rx="6"/>
-      <rect x="65" y="128" width="13" height="92" rx="6"/>
-      <rect x="22" y="88" width="28" height="16" rx="3"/>
-      <rect x="34" y="60" width="12" height="36" rx="5" transform="rotate(18 40 78)"/>`
-  },
+ 
 
   video: {
     gender: "m",
