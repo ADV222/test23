@@ -129,10 +129,13 @@
   .cell{
     background:var(--panel);border:3px solid #2A2A3E;
     padding:10px 6px 8px;
-    display:flex;flex-direction:column;align-items:center;gap:8px;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-end;gap:8px;
     min-height:120px;
   }
-  .cell svg{width:52px;height:auto;flex:none}
+  .cell svg{width:52px;flex:none}
+  .cell[data-gender="f"] svg{height:68px}
+  .cell[data-gender="m"] svg{height:82px}
   .cell .c-label{
     font-family:var(--display);font-size:.5rem;color:var(--gray);
     text-align:center;line-height:1.5;
@@ -251,7 +254,7 @@
     .hero{padding:12px 5vw 7vh}
     .fighters{padding:60px 4vw 30px}
     .select-grid{grid-template-columns:repeat(3,1fr)}
-    .cell{height:160px;justify-content:flex-start}
+    .cell{height:160px;justify-content:flex-end}
     .cell .c-label{min-height:1.6rem;width:100%;display:flex;align-items:center;justify-content:center}
     .process{padding:30px 5vw 60px}
     .contact{padding:70px 5vw}
@@ -298,32 +301,32 @@
   <div class="select-layout">
     <div class="select-grid" id="grid" role="listbox" aria-label="Odaberi tipa">
 
-      <button class="cell active" data-tip="0" role="option" aria-selected="true" aria-label="Tipkinja za marketing">
+      <button class="cell active" data-tip="0" data-gender="f" role="option" aria-selected="true" aria-label="Tipkinja za marketing">
         <div class="sil-placeholder" data-sil="marketing" data-fill="#FFD233"></div>
         <span class="c-label">MARKETING</span>
       </button>
 
-      <button class="cell" data-tip="1" role="option" aria-selected="false" aria-label="Tipkinja za društvene mreže">
+      <button class="cell" data-tip="1" data-gender="f" role="option" aria-selected="false" aria-label="Tipkinja za društvene mreže">
         <div class="sil-placeholder" data-sil="drustvene" data-fill="#FFD233"></div>
         <span class="c-label">DRUŠTVENE</span>
       </button>
 
-      <button class="cell" data-tip="2" role="option" aria-selected="false" aria-label="Tip za web aplikacije">
+      <button class="cell" data-tip="2" data-gender="m" role="option" aria-selected="false" aria-label="Tip za web aplikacije">
         <div class="sil-placeholder" data-sil="web" data-fill="#FFD233"></div>
         <span class="c-label">WEB APP</span>
       </button>
 
-      <button class="cell" data-tip="3" role="option" aria-selected="false" aria-label="Tip za video i foto">
+      <button class="cell" data-tip="3" data-gender="m" role="option" aria-selected="false" aria-label="Tip za video i foto">
         <div class="sil-placeholder" data-sil="video" data-fill="#FFD233"></div>
         <span class="c-label">VIDEO/FOTO</span>
       </button>
 
-      <button class="cell" data-tip="4" role="option" aria-selected="false" aria-label="Tipkinja za dizajn">
+      <button class="cell" data-tip="4" data-gender="f" role="option" aria-selected="false" aria-label="Tipkinja za dizajn">
         <div class="sil-placeholder" data-sil="dizajn" data-fill="#FFD233"></div>
         <span class="c-label">DIZAJN</span>
       </button>
 
-      <button class="cell" data-tip="5" role="option" aria-selected="false" aria-label="Tip za ostalo">
+      <button class="cell" data-tip="5" data-gender="m" role="option" aria-selected="false" aria-label="Tip za ostalo">
         <div class="sil-placeholder" data-sil="ostalo" data-fill="#FFD233"></div>
         <span class="c-label">OSTALO</span>
       </button>
