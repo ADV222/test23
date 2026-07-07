@@ -329,7 +329,7 @@
   }
 
   @media(max-width:600px){
-    header{flex-wrap:wrap;gap:6px}
+    header{gap:6px}
     nav{gap:14px;font-size:.82rem}
     .hero-wall{padding:12px 5vw 6vh}
 
@@ -374,6 +374,29 @@
     .process{padding:60px 5vw}
     .contact{padding:70px 5vw}
     .contact .cta{display:block;max-width:320px;margin:36px auto 0}
+  }
+
+  /* ---------- hamburger menu (mobile) ---------- */
+  .burger{display:none;background:none;border:none;padding:6px;cursor:pointer;z-index:51}
+  .burger svg{width:28px;height:28px;display:block}
+  .burger line{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;transition:transform .25s ease,opacity .15s ease}
+  .burger.open .l1{transform:translate(4px,3px) rotate(45deg)}
+  .burger.open .l2{opacity:0}
+  .burger.open .l3{transform:translate(-10px,7px) rotate(-45deg)}
+  @media(max-width:600px){
+    nav{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:inherit;
+      border-bottom:2px solid currentColor;
+      padding:0 5vw 14px;
+      font-size:.95rem !important;
+    }
+    nav.open{display:flex}
+    nav a{padding:12px 0 !important;border-bottom:1px solid rgba(128,128,128,.2) !important}
+    nav a:last-child{border-bottom:none !important}
+    .burger{display:block}
+    header{position:relative}
   }
 </style>
 <script src="/silhouettes.js"></script>
@@ -469,6 +492,7 @@ window.IMAMO_TEKST = {
     <a href="#proces">Kako radimo</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
+  <button class="burger" aria-label="Izbornik"><svg viewBox="0 0 24 24"><line class="l1" x1="3" y1="6" x2="21" y2="6"/><line class="l2" x1="3" y1="12" x2="21" y2="12"/><line class="l3" x1="3" y1="18" x2="21" y2="18"/></svg></button>
 </header>
 
 <section class="hero-wall">
@@ -761,5 +785,22 @@ window.IMAMO_TEKST = {
 
 </script>
 
+
+<script>
+(function(){
+  var b=document.querySelector('.burger'),n=document.querySelector('header nav');
+  if(!b||!n)return;
+  b.addEventListener('click',function(){
+    b.classList.toggle('open');
+    n.classList.toggle('open');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      b.classList.remove('open');
+      n.classList.remove('open');
+    });
+  });
+})();
+</script>
 </body>
 </html>
