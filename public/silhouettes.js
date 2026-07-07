@@ -51,22 +51,21 @@ window.IMAMO_SILHOUETTES = {
       <rect x="70" y="94" width="22" height="28" rx="3" transform="rotate(12 81 108)"/>
       <rect x="72" y="78" width="9" height="28" rx="4" transform="rotate(-28 77 92)"/>`
   },
-  
-   web: {
-   gender: "f",
-    viewBox: "0 12 130 250",
-    body: `<circle cx="63" cy="56" r="14"/>
-      <circle cx="63" cy="38" r="8"/>
-      <path d="M48,74 Q48,106 44,136 L84,136 Q80,106 80,74 Z"/>
-      <rect x="52" y="130" width="11" height="90" rx="5"/>
-      <rect x="67" y="130" width="11" height="90" rx="5"/>
-      <rect x="70" y="94" width="22" height="28" rx="3" transform="rotate(12 81 108)"/>
-      <rect x="72" y="78" width="9" height="28" rx="4" transform="rotate(-28 77 92)"/>`
-  },
 
   // ===== MUŠKI LIKOVI (pravokutni torso, viši — standardni viewBox) =====
 
- 
+  web: {
+    gender: "m",
+    viewBox: "0 0 130 250",
+    body: `<circle cx="62" cy="36" r="17"/>
+      <circle cx="80" cy="48" r="8"/>
+      <circle cx="86" cy="62" r="6"/>
+      <rect x="44" y="54" width="38" height="78" rx="15"/>
+      <rect x="48" y="128" width="13" height="92" rx="6"/>
+      <rect x="65" y="128" width="13" height="92" rx="6"/>
+      <rect x="22" y="88" width="28" height="16" rx="3"/>
+      <rect x="34" y="60" width="12" height="36" rx="5" transform="rotate(18 40 78)"/>`
+  },
 
   video: {
     gender: "m",
