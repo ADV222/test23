@@ -471,7 +471,7 @@
     pName.textContent = f.name;
     pSpecial.textContent = f.special;
     pBio.textContent = f.bio;
-    pSvg.innerHTML = '<svg viewBox="' + getAllViewBoxes()[i] + '" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD233">' + silData[i] + '</g></svg>';
+    pSvg.innerHTML = '<svg viewBox="0 0 130 250" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD233">' + silData[i] + '</g></svg>';
     pStats.innerHTML = f.stats.map(([label, val]) => `
       <div class="stat">
         <div class="s-label"><span>${label}</span><span>${val}</span></div>
@@ -502,7 +502,9 @@
 
 <script>
 document.querySelectorAll('.sil-placeholder').forEach(function(el) {
-  el.outerHTML = getSilhouetteSVG(el.dataset.sil, el.dataset.fill);
+  var s = IMAMO_SILHOUETTES[el.dataset.sil];
+  var fill = el.dataset.fill;
+  el.outerHTML = '<svg viewBox="0 0 130 250" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg"><g fill="' + fill + '">' + s.body + '</g></svg>';
 });
 </script>
 </body>
