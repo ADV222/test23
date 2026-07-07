@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imamo tipa — kreativna agencija</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFCB05;
+    --blue:#2A75BB;
+    --blue-dark:#1A4E85;
+    --red:#FF3B30;
+    --red-soft:#FF7A5C;
+    --ink:#173052;
+    --paper:#FFF9E8;
+    --display:'Luckiest Guy','Arial Black','Impact',system-ui,sans-serif;
+    --body:'Baloo 2',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  a{color:inherit}
+  button{font-family:inherit;cursor:pointer}
+  :focus-visible{outline:4px solid var(--blue);outline-offset:3px}
+
+  /* žuta slova s plavim obrubom */
+  .toon{
+    font-family:var(--display);
+    color:var(--yellow);
+    -webkit-text-stroke:2.5px var(--blue);
+    paint-order:stroke fill;
+    text-shadow:3px 4px 0 var(--blue-dark);
+    letter-spacing:.03em;
+    font-weight:400;
+  }
+
+  /* sunburst zrake */
+  .burst{
+    background:
+      radial-gradient(circle at 50% 46%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.55) 16%, rgba(150,200,255,.28) 34%, rgba(255,255,255,0) 62%),
+      repeating-conic-gradient(from 0deg at 50% 46%, var(--red) 0deg 11deg, var(--red-soft) 11deg 22deg);
+  }
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 5vw;
+    position:sticky;top:0;z-index:50;
+    background:var(--blue);
+    border-bottom:5px solid var(--yellow);
+  }
+  .logo{
+    font-family:var(--display);font-size:1.5rem;
+    color:var(--yellow);text-decoration:none;
+    -webkit-text-stroke:1.5px var(--blue-dark);
+    text-shadow:2px 3px 0 var(--blue-dark);
+  }
+  .logo sup{font-family:var(--body);font-weight:600;font-size:.5rem;color:#BBD9F5;-webkit-text-stroke:0;text-shadow:none}
+  nav{display:flex;gap:22px;font-weight:800;font-size:.92rem}
+  nav a{text-decoration:none;color:#fff;padding:6px 0;border-bottom:3px solid transparent}
+  nav a:hover{color:var(--yellow);border-bottom-color:var(--yellow)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    text-align:center;
+    padding:13vh 5vw 12vh;
+  }
+  .hero .q-float{
+    position:absolute;font-family:var(--display);
+    color:var(--yellow);
+    -webkit-text-stroke:2px var(--blue);
+    text-shadow:3px 4px 0 var(--blue-dark);
+    opacity:.9;pointer-events:none;
+    animation:bob 3.4s ease-in-out infinite;
+  }
+  .q1{font-size:5rem;top:12%;left:8%;animation-delay:0s}
+  .q2{font-size:3.4rem;top:22%;right:10%;animation-delay:.8s;transform:rotate(14deg)}
+  .q3{font-size:2.6rem;bottom:14%;left:16%;animation-delay:1.6s;transform:rotate(-12deg)}
+  @keyframes bob{50%{transform:translateY(-14px)}}
+  @media(max-width:700px){.q1{font-size:3rem;left:4%}.q2{font-size:2.2rem;right:5%}.q3{display:none}}
+
+  .hero .eyebrow{
+    display:inline-block;
+    font-weight:800;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;
+    background:var(--blue);color:#fff;
+    padding:9px 22px;border-radius:999px;
+    border:3px solid var(--blue-dark);
+    box-shadow:0 4px 0 var(--blue-dark);
+    margin-bottom:34px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,8vw,6rem);
+    line-height:1.05;
+  }
+  .hero h1 .line{display:block;white-space:nowrap;font-family:var(--display);color:var(--ink);font-weight:400;letter-spacing:.02em}
+  .hero h1 .need{
+    display:inline-block;min-width:2ch;
+    color:var(--red);
+    transition:opacity .25s ease;
+  }
+  .hero h1 .answer{
+    display:block;margin-top:.1em;white-space:nowrap;
+    transition:opacity .25s ease;
+  }
+  .fade-out{opacity:0;visibility:hidden}
+  .hero p{
+    margin:30px auto 0;max-width:52ch;font-size:1.15rem;font-weight:600;
+  }
+  .hero .cta{
+    display:inline-block;margin-top:40px;
+    font-family:var(--display);font-size:1.25rem;letter-spacing:.05em;
+    background:var(--yellow);color:var(--blue-dark);
+    text-decoration:none;
+    padding:16px 40px;border-radius:16px;
+    border:4px solid var(--blue);
+    box-shadow:0 6px 0 var(--blue-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .hero .cta:hover{transform:translateY(3px);box-shadow:0 3px 0 var(--blue-dark)}
+
+  /* ---------- traka usluga ---------- */
+  .marquee{
+    background:var(--blue);color:var(--yellow);
+    overflow:hidden;white-space:nowrap;
+    border-top:5px solid var(--yellow);border-bottom:5px solid var(--yellow);
+    padding:12px 0;font-family:var(--display);font-size:1.15rem;letter-spacing:.08em;
+  }
+  .marquee-track{display:inline-block;animation:scroll 28s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee span{margin:0 22px}
+
+  /* ---------- kviz: tko je taj tip ---------- */
+  .quiz{
+    padding:90px 5vw 20px;
+    text-align:center;
+  }
+  .quiz-head h2{font-size:clamp(2.4rem,7vw,4.6rem)}
+  .quiz-head p{margin:18px auto 0;max-width:52ch;font-size:1.1rem;font-weight:600}
+
+  .stage-wrap{max-width:900px;margin:36px auto 0}
+  .stage{
+    position:relative;
+    border-radius:28px;
+    border:6px solid var(--blue);
+    box-shadow:0 10px 0 var(--blue-dark), 0 26px 60px rgba(23,48,82,.25);
+    overflow:hidden;
+    padding:56px 5vw 46px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:min(680px,110vw);
+  }
+  .stage .big-q{
+    position:absolute;top:18px;right:26px;
+    font-family:var(--display);font-size:clamp(3rem,8vw,5.5rem);
+    color:var(--yellow);
+    -webkit-text-stroke:2.5px var(--blue);
+    text-shadow:4px 5px 0 var(--blue-dark);
+    animation:bob 2.8s ease-in-out infinite;
+  }
+  .sil-holder{
+    min-height:min(340px,52vw);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    flex:1;
+  }
+  .sil-holder svg{
+    height:min(340px,52vw);width:auto;display:block;
+    margin:0 auto;
+    filter:drop-shadow(0 10px 24px rgba(23,48,82,.35));
+    transition:filter .3s ease;
+  }
+  .sil-holder svg .fig{fill:#173052;transition:fill .35s ease}
+  .stage.revealed .sil-holder svg .fig{fill:var(--yellow);stroke:var(--blue);stroke-width:3}
+  .reveal-name{
+    position:absolute;bottom:70px;left:0;right:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    pointer-events:none;
+  }
+  .reveal-name .to-je{
+    font-family:var(--display);font-size:1.1rem;color:#fff;
+    -webkit-text-stroke:1.5px var(--blue);
+    text-shadow:2px 3px 0 var(--blue-dark);
+    opacity:0;transform:translateY(8px);
+  }
+  .reveal-name .r-name{
+    font-family:var(--display);font-size:clamp(1.6rem,5vw,2.8rem);
+    color:var(--yellow);
+    -webkit-text-stroke:2px var(--blue);
+    text-shadow:3px 4px 0 var(--blue-dark);
+    opacity:0;transform:translateY(8px) scale(.9);
+  }
+  .stage.revealed .to-je{
+    opacity:1;transform:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .stage.revealed .r-name{
+    opacity:1;transform:none;
+    transition:opacity .35s ease .1s, transform .35s ease .1s;
+  }
+
+  .stage-buttons{
+    position:absolute;bottom:20px;left:0;right:0;
+    display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;
+    padding:13px 30px;border-radius:14px;
+    border:4px solid var(--blue);
+    box-shadow:0 5px 0 var(--blue-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{transform:translateY(3px);box-shadow:0 2px 0 var(--blue-dark)}
+  .btn-reveal{background:var(--yellow);color:var(--blue-dark)}
+  .btn-next{background:#fff;color:var(--blue)}
+
+  .dossier{
+    max-width:900px;margin:0 auto;
+    max-height:0;overflow:hidden;
+    background:#fff;
+    border:5px solid var(--blue);border-radius:22px;
+    box-shadow:0 8px 0 var(--blue-dark);
+    padding:0 30px;text-align:left;
+    opacity:0;transform:translateY(10px);
+    transition:max-height .4s ease, opacity .35s ease, transform .35s ease, padding .4s ease, margin .4s ease;
+  }
+  .dossier.show{opacity:1;transform:none;max-height:400px;padding:26px 30px;margin:20px auto 0}
+  .dossier .d-crime{
+    font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--red);
+  }
+  .dossier .d-bio{margin-top:8px;font-size:1.05rem;font-weight:600}
+
+  .thumbs{
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .thumb{
+    width:74px;height:74px;border-radius:18px;
+    background:#fff;border:4px solid var(--blue);
+    box-shadow:0 4px 0 var(--blue-dark);
+    display:flex;align-items:flex-end;justify-content:center;
+    padding:6px;transition:transform .12s ease;
+  }
+  .thumb:hover{transform:translateY(-3px)}
+  .thumb.active{background:var(--yellow)}
+  .thumb svg{height:60px;width:auto;display:block}
+  .thumbs.mobile-thumbs{display:none}
+  .thumb svg g{fill:#173052}
+
+  /* ---------- proces ---------- */
+  .process{padding:20px 5vw 90px;max-width:1050px;margin:0 auto;text-align:center}
+  .process h2{font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:56px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;text-align:center}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{
+    background:#fff;border:5px solid var(--blue);border-radius:22px;
+    box-shadow:0 8px 0 var(--blue-dark);
+    padding:30px 24px;
+  }
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:54px;height:54px;border-radius:50%;
+    background:var(--red);color:#fff;
+    font-family:var(--display);font-size:1.5rem;
+    border:4px solid var(--blue-dark);
+  }
+  .step h3{font-family:var(--display);font-size:1.5rem;color:var(--blue);margin:16px 0 8px;letter-spacing:.03em}
+  .step p{font-size:1rem;font-weight:600}
+
+  /* ---------- kontakt ---------- */
+  .contact{
+    position:relative;overflow:hidden;
+    padding:110px 5vw;text-align:center;
+  }
+  .contact h2{font-size:clamp(2.4rem,7vw,5rem);line-height:1.08}
+  .contact p{
+    margin:24px auto 0;max-width:46ch;font-size:1.15rem;font-weight:700;
+    background:rgba(255,255,255,.85);border-radius:16px;padding:12px 20px;
+  }
+  .contact .cta{
+    display:inline-block;margin-top:42px;
+    font-family:var(--display);font-size:1.35rem;letter-spacing:.05em;
+    background:var(--yellow);color:var(--blue-dark);
+    text-decoration:none;
+    padding:18px 48px;border-radius:16px;
+    border:4px solid var(--blue);
+    box-shadow:0 7px 0 var(--blue-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .contact .cta:hover{transform:translateY(3px);box-shadow:0 4px 0 var(--blue-dark)}
+  .contact .meta{
+    display:block;width:fit-content;
+    margin:28px auto 0;font-weight:800;font-size:.85rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    background:rgba(255,255,255,.85);
+    border-radius:999px;padding:8px 20px;
+  }
+
+  footer{
+    background:var(--blue);color:#BBD9F5;
+    border-top:5px solid var(--yellow);
+    padding:20px 5vw;font-size:.85rem;font-weight:600;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  @media(max-width:600px){
+    header{flex-wrap:wrap;gap:6px}
+    nav{gap:14px;font-size:.82rem}
+    .hero{padding:9vh 5vw 8vh}
+    .hero h1{font-size:clamp(2rem,7.5vw,2.6rem)}
+    .hero h1 .need{
+      -webkit-text-stroke:2.5px #fff;
+      paint-order:stroke fill;
+    }
+    .quiz{padding:60px 4vw 18px}
+    .stage{padding:30px 5vw 30px;min-height:min(600px,105vw)}
+    .reveal-name{bottom:56px}
+    .thumbs{padding:0 4vw;margin-top:0}
+    .thumbs.desktop-thumbs{display:none}
+    .thumbs.mobile-thumbs{display:flex;padding:0 4vw 12px}
+    .quiz{padding-bottom:0}
+    .process{padding:10px 5vw 56px}
+    .contact{padding:75px 5vw}
+    .contact .cta{display:block;max-width:320px;margin:36px auto 0}
+  }
+</style>
+<script src="/silhouettes.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">IMAMO TIPA<sup> *i tipkinje</sup></a>
+  <nav>
+    <a href="#postava">Postava</a>
+    <a href="#proces">Kako radimo</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero burst">
+  <span class="q-float q1" aria-hidden="true">?</span>
+  <span class="q-float q2" aria-hidden="true">?</span>
+  <span class="q-float q3" aria-hidden="true">?</span>
+  <p class="eyebrow">Kreativna agencija</p>
+  <h1>
+    <span class="line">Trebaš <span class="need" id="need">marketing</span>?</span>
+    <span class="answer toon" id="answer">IMAMO TIPA.</span>
+  </h1>
+  <p>Za svaki problem imamo osobu koja ga rješava. Ozbiljan posao, neobavezne ponude i rezultati koji donose.. rezultate.</p>
+  <a class="cta" href="#postava">KRENI U LOV ↓</a>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>MARKETING</span><span>★</span><span>DRUŠTVENE MREŽE</span><span>★</span><span>WEB APLIKACIJE</span><span>★</span><span>VIDEO I FOTO PRODUKCIJA</span><span>★</span><span>DIZAJN</span><span>★</span><span>ZA OSTALO IMAMO TIPA</span><span>★</span>
+    <span>MARKETING</span><span>★</span><span>DRUŠTVENE MREŽE</span><span>★</span><span>WEB APLIKACIJE</span><span>★</span><span>VIDEO I FOTO PRODUKCIJA</span><span>★</span><span>DIZAJN</span><span>★</span><span>ZA OSTALO IMAMO TIPA</span><span>★</span>
+  </div>
+</div>
+
+<section class="quiz" id="postava">
+  <div class="quiz-head">
+    <h2 class="toon">TKO JE TAJ TIP?</h2>
+    <p>Šest silueta, šest specijalnosti. Otkrij tko je tko.</p>
+  </div>
+
+  <div class="stage-wrap">
+    <div class="stage burst" id="stage">
+      <span class="big-q" aria-hidden="true">?</span>
+      <div class="sil-holder" id="sil"></div>
+      <div class="reveal-name">
+        <span class="to-je">TO JE...</span>
+        <span class="r-name" id="r-name">TIP ZA MARKETING!</span>
+      </div>
+      <div class="stage-buttons">
+        <button class="btn btn-reveal" id="btn-reveal">OTKRIJ!</button>
+        <button class="btn btn-next" id="btn-next">SLJEDEĆI TIP →</button>
+      </div>
+    </div>
+
+    <div class="dossier" id="dossier" aria-live="polite">
+      <div class="d-crime" id="d-crime"></div>
+      <div class="d-bio" id="d-bio"></div>
+    </div>
+
+    <div class="thumbs desktop-thumbs" id="thumbs" aria-label="Odaberi siluetu"></div>
+  </div>
+</section>
+
+<section class="process" id="proces">
+  <h2 class="toon">KAKO TO IDE</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Javiš se</h3>
+      <p>Mail, poziv, DM, poruka golubom. Sve prolazi. Opišeš problem svojim riječima — mi prevodimo na "izvedivo".</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Nađemo tipa</h3>
+      <p>Ili tipkinju. Ili više njih odjednom, ovisi koliko je gadno. Dobiješ plan, rok i cijenu bez sitnih slova.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Tip riješi</h3>
+      <p>Ti se hvališ rezultatima. Mi se pravimo skromni. Svi sretni, nitko uhićen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="thumbs mobile-thumbs" id="thumbs-mobile" aria-label="Odaberi siluetu"></div>
+
+<section class="contact burst" id="kontakt">
+  <h2 class="toon">IMAŠ PROBLEM?<br>MI IMAMO TIPA.</h2>
+  <p>Javi se i reci što ti treba. Konzultacije su besplatne, a tip/kinje su tipično spremni.</p>
+  <a class="cta" href="mailto:info@imamotipa.hr">JAVI NAM SE</a>
+  <div class="meta">@imamotipa · info@imamotipa.hr</div>
+</section>
+
+<footer>
+  <span>© 2026 Imamo tipa</span>
+  <span>Svi tipovi su stvarni. Uglavnom.</span>
+</footer>
+
+<script>
+  // --- rotacija hero naslova ---
+  const pairs = [
+    ["marketing", "IMAMO TIPA."],
+    ["web stranicu", "IMAMO TIPKINJU."],
+    ["video spot", "IMAMO TIPA."],
+    ["dizajn", "IMAMO TIPKINJU."],
+    ["sve navedeno", "IMAMO TIPOVE."]
+  ];
+  const needEl = document.getElementById("need");
+  const ansEl = document.getElementById("answer");
+  let idx = 0;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  setInterval(() => {
+    idx = (idx + 1) % pairs.length;
+    if (reduced) {
+      needEl.textContent = pairs[idx][0];
+      ansEl.textContent = pairs[idx][1];
+      return;
+    }
+    needEl.classList.add("fade-out");
+    ansEl.classList.add("fade-out");
+    setTimeout(() => {
+      needEl.textContent = pairs[idx][0];
+      ansEl.textContent = pairs[idx][1];
+      needEl.classList.remove("fade-out");
+      ansEl.classList.remove("fade-out");
+    }, 260);
+  }, 3200);
+
+  // --- siluete (iz silhouettes.js) ---
+  const silhouettes = getAllSilhouettes();
+
+  const tips = [
+    {
+      name: "TIPKINJA ZA MARKETING!",
+      crime: "Specijalnost: nagli rast dosega",
+      bio: "Zna zašto ti nitko ne lajka objave — i zna kako to popraviti. Govori fluentno \"algoritam\", a budžet za oglase troši kao da je njezin. Pažljivo, dakle."
+    },
+    {
+      name: "TIPKINJA ZA DRUŠTVENE MREŽE!",
+      crime: "Specijalnost: viralni sadržaj dok ti spavaš",
+      bio: "Zna u koliko sati objaviti da te vide, a u koliko da te ignoriraju. Trend osjeti tjedan dana prije nego postane trend. Tvoj \"samo par storyja\" pretvori u strategiju."
+    },
+    {
+      name: "TIP ZA WEB APLIKACIJE!",
+      crime: "Specijalnost: aplikacije koje rade i na maminom mobitelu",
+      bio: "Piše kod brže nego što ti pišeš brief. Tvoja stara stranica iz 2014.? Vidio je. Ne želi razgovarati o tome."
+    },
+    {
+      name: "TIP ZA VIDEO I FOTO!",
+      crime: "Specijalnost: kadrovi koji izgledaju skuplje nego što jesu",
+      bio: "Snima, škljoca, reže, boji. Kamera mu je produžetak ruke. Nemoj ga pitati za dron ako imaš pametnog posla taj dan — nećeš ga zaustaviti."
+    },
+    {
+      name: "TIPKINJA ZA DIZAJN!",
+      crime: "Specijalnost: vidi 50 nijansi sive. Doslovno.",
+      bio: "Tvoj logo napravljen u Wordu ju osobno vrijeđa, ali dovoljno je pristojna da to ne kaže naglas. Umjesto toga — napravi novi."
+    },
+    {
+      name: "TIP ZA OSTALO!",
+      crime: "Specijalnost: u moru ljudi mi znamo tipa za sve",
+      bio: "Imamo Tipa pokriva sva područja potrebna za uspješno poslovanje, no za one koji žele dodatne usluge — znamo tipa, garantirano. Javi nam se s idejom, a mi ćemo ti odgovoriti s planom."
+    }
+  ];
+
+  // centrira siluetu unutar njenog okvira (neke siluete nisu simetrično nacrtane)
+  function centerSilhouette(svgEl) {
+    const g = svgEl.querySelector("g");
+    if (!g) return;
+    const head = g.querySelector("circle");
+    if (!head) return;
+    const vb = svgEl.viewBox.baseVal;
+    const bodyCx = parseFloat(head.getAttribute("cx"));
+    const dx = bodyCx - vb.width / 2;
+    svgEl.setAttribute("viewBox", `${dx} ${vb.y} ${vb.width} ${vb.height}`);
+  }
+
+  const stage = document.getElementById("stage");
+  const sil = document.getElementById("sil");
+  const rName = document.getElementById("r-name");
+  const dossier = document.getElementById("dossier");
+  const dCrime = document.getElementById("d-crime");
+  const dBio = document.getElementById("d-bio");
+  const thumbsEl = document.getElementById("thumbs");
+  const thumbsMobile = document.getElementById("thumbs-mobile");
+  let current = 0;
+
+  function setTip(i, revealed = false) {
+    current = i;
+    sil.innerHTML = `<svg viewBox="0 0 130 250" xmlns="http://www.w3.org/2000/svg">${silhouettes[i]}</svg>`;
+    centerSilhouette(sil.querySelector("svg"));
+    rName.textContent = tips[i].name;
+    dCrime.textContent = tips[i].crime;
+    dBio.textContent = tips[i].bio;
+    stage.classList.toggle("revealed", revealed);
+    dossier.classList.toggle("show", revealed);
+    [thumbsEl, thumbsMobile].forEach(el => {
+      [...el.children].forEach((t, ti) => t.classList.toggle("active", ti === i));
+    });
+  }
+
+  document.getElementById("btn-reveal").addEventListener("click", () => {
+    stage.classList.add("revealed");
+    dossier.classList.add("show");
+  });
+  document.getElementById("btn-next").addEventListener("click", () => {
+    setTip((current + 1) % tips.length, false);
+  });
+
+  // thumbnails — build in both containers
+  [thumbsEl, thumbsMobile].forEach(container => {
+    tips.forEach((t, i) => {
+      const b = document.createElement("button");
+      b.className = "thumb";
+      b.setAttribute("aria-label", "Silueta " + (i + 1));
+      b.innerHTML = `<svg viewBox="0 0 130 250" xmlns="http://www.w3.org/2000/svg">${silhouettes[i]}</svg>`;
+      b.addEventListener("click", () => setTip(i, false));
+      container.appendChild(b);
+      centerSilhouette(b.querySelector("svg"));
+    });
+  });
+
+  setTip(0, false);
+</script>
+
+</body>
+</html>

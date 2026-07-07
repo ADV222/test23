@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imamo tipa — a koji si ti tip tipa?</title>
+<meta name="description" content="Ista ekipa tip/kinja. Šest potpuno različitih iskustava. Odaberi svoje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#111111;
+    --paper:#F6F5F0;
+    --ink:#141414;
+    --yellow:#FFD233;
+    --gray:#A6A69E;
+    --display:'Anton',sans-serif;
+    --body:'Space Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--body);
+    background:var(--black);
+    color:var(--paper);
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+  }
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:20px 5vw;border-bottom:2px solid var(--paper);
+  }
+  .logo{font-family:var(--display);font-size:1.4rem;letter-spacing:.03em;text-decoration:none}
+  .logo sup{font-family:var(--body);font-weight:500;font-size:.55rem;color:var(--gray)}
+  .tag{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+  @media(max-width:600px){
+    header{padding:14px 5vw}
+    .logo{font-size:1.15rem}
+    .tag{display:none}
+  }
+
+  /* ---------- hero ---------- */
+  main{
+    flex:1;
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:clamp(28px,6vh,72px) 5vw clamp(40px,8vh,90px);
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:400;
+    line-height:1.25;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+  }
+  h1 .line{display:block}
+  .line-1{font-size:clamp(1.6rem,4.4vw,3.3rem)}
+  .line-2{font-size:clamp(1.1rem,4.3vw,2.9rem);margin-top:.15em}
+  h1 .hl{
+    display:inline-block;
+    background:var(--yellow);
+    color:var(--ink);
+    padding:.06em .14em;
+  }
+  @media(max-width:600px){
+    .line-1{font-size:8.2vw;white-space:nowrap}
+    .line-2{font-size:4.4vw;white-space:nowrap}
+  }
+  .question{
+    margin-top:clamp(16px,2.5vh,26px);
+    font-size:clamp(1.05rem,2.2vw,1.5rem);
+    font-weight:700;
+  }
+  .question::after{
+    content:"↓";
+    display:inline-block;
+    margin-left:.5em;
+    color:var(--yellow);
+    animation:bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(5px)}
+  }
+
+  /* ---------- tiles ---------- */
+  .grid{
+    margin-top:clamp(28px,5vh,56px);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(12px,2vw,20px);
+  }
+  .tile{
+    --accent:var(--yellow);
+    --tile-text:var(--ink);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:clamp(22px,4vw,44px) 12px;
+    background:var(--black);
+    border:2px solid var(--paper);
+    color:var(--paper);
+    text-decoration:none;
+    text-align:center;
+    transition:transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+  }
+  .tile:nth-child(odd){transform:rotate(-.6deg)}
+  .tile:nth-child(even){transform:rotate(.6deg)}
+  .tile .emoji{
+    font-size:clamp(2.4rem,6vw,4rem);
+    line-height:1;
+    transition:transform .18s ease;
+  }
+  .tile .name{
+    font-family:var(--display);
+    font-size:clamp(.95rem,1.8vw,1.3rem);
+    letter-spacing:.05em;
+    text-transform:uppercase;
+  }
+  .tile .desc{
+    font-size:.78rem;
+    color:var(--gray);
+    transition:color .18s ease;
+  }
+  .tile:hover,.tile:focus-visible{
+    background:var(--accent);
+    color:var(--tile-text);
+    border-color:var(--accent);
+    transform:rotate(0) translate(-4px,-4px);
+    box-shadow:6px 6px 0 var(--paper);
+    z-index:1;
+  }
+  .tile:hover .desc,.tile:focus-visible .desc{color:inherit}
+  .tile:hover .emoji,.tile:focus-visible .emoji{transform:scale(1.15) rotate(-6deg)}
+  .tile:active{transform:translate(0,0);box-shadow:2px 2px 0 var(--paper)}
+
+  /* per-page accents */
+  .t-osumnjiceni{--accent:#F6F5F0}
+  .t-misteriozni{--accent:var(--yellow)}
+  .t-retro{--accent:#57E389}
+  .t-ljubavni{--accent:#FF7BAC}
+  .t-filmski{--accent:#B79AFF}
+  .t-korporativni{--accent:#7FA6C9}
+
+  @media(max-width:760px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:380px){
+    .grid{grid-template-columns:1fr}
+    .tile{flex-direction:row;justify-content:flex-start;gap:16px;padding:18px 16px;text-align:left}
+    .tile .emoji{font-size:2rem}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:2px solid var(--paper);
+    padding:16px 5vw;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-size:.78rem;color:var(--gray);
+  }
+  @media(max-width:600px){
+    footer{flex-direction:column-reverse;gap:4px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">IMAMO TIPA<sup> *i tipkinje</sup></a>
+  <span class="tag">Kreativna agencija</span>
+</header>
+
+<main>
+  <h1>
+    <span class="line line-1">Ista ekipa tip/kinja.</span>
+    <span class="line line-2"><span class="hl">Šest potpuno različitih iskustava.</span></span>
+  </h1>
+  <p class="question">Koji si ti tip tipa? Odgovori na najkraći test osobnosti i upoznaj nas.</p>
+
+  <nav class="grid" aria-label="Odaberi iskustvo">
+    <a class="tile t-osumnjiceni" href="/imamo-tipa-osumnjiceni.html">
+      <span class="emoji" aria-hidden="true">🔎</span>
+      <span class="name">Osumnjičeni</span>
+      <span class="desc">Identificiraj pravog tipa.</span>
+    </a>
+    <a class="tile t-misteriozni" href="/imamo-tipa-kviz.html">
+      <span class="emoji" aria-hidden="true">❓</span>
+      <span class="name">Misteriozni</span>
+      <span class="desc">Tko je taj Tip?</span>
+    </a>
+    <a class="tile t-retro" href="/imamo-tipa-arcade.html">
+      <span class="emoji" aria-hidden="true">🥊</span>
+      <span class="name">Retro</span>
+      <span class="desc">Ubaci žeton.</span>
+    </a>
+    <a class="tile t-ljubavni" href="/imamo-tipa-dating.html">
+      <span class="emoji" aria-hidden="true">❤️</span>
+      <span class="name">Ljubavni</span>
+      <span class="desc">Pronađi svoj match.</span>
+    </a>
+    <a class="tile t-filmski" href="/imamo-tipa-film.html">
+      <span class="emoji" aria-hidden="true">🎥</span>
+      <span class="name">Filmski</span>
+      <span class="desc">Uskoro u Vašem objektu.</span>
+    </a>
+    <a class="tile t-korporativni" href="/imamo-tipa-korporativni.html">
+      <span class="emoji" aria-hidden="true">💼</span>
+      <span class="name">Korporativni</span>
+      <span class="desc">Analiza. Akcija. Rast.</span>
+    </a>
+  </nav>
+</main>
+
+<footer>
+  <span>© 2026 Imamo Tipa</span>
+  <span>Odaberi bilo koji ulaz. Ekipa je ista.</span>
+</footer>
+
+</body>
+</html>
