@@ -32,6 +32,20 @@
   a{color:inherit}
   :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
+  /* ---------- prolivene boje u pozadini ---------- */
+  .prolivene{
+    position:fixed;inset:0;
+    width:100%;height:100%;
+    z-index:-1;pointer-events:none;
+  }
+  .prolivene .mrlja{transform-origin:center;transform-box:fill-box}
+  .prolivene .pluta-1{animation:plutaj 26s ease-in-out infinite alternate}
+  .prolivene .pluta-2{animation:plutaj 34s ease-in-out infinite alternate-reverse}
+  @keyframes plutaj{
+    from{transform:translate(0,0) rotate(0deg)}
+    to{transform:translate(14px,-10px) rotate(1.5deg)}
+  }
+
   /* ---------- header ---------- */
   header{
     display:flex;justify-content:space-between;align-items:baseline;
@@ -136,6 +150,11 @@
     font-size:.68rem;font-weight:600;letter-spacing:.12em;
     text-transform:uppercase;color:var(--muted);
   }
+  .chip .ulasci{
+    letter-spacing:.08em;
+    opacity:0;transition:opacity .4s ease;
+  }
+  .chip .ulasci.ima{opacity:1}
   .chip .ime{
     display:block;
     font-family:var(--display);font-weight:700;
@@ -223,12 +242,17 @@
     .chip:nth-child(odd) .boja{transform:rotate(-1.2deg)}
     .chip:nth-child(even) .boja{transform:rotate(1.2deg)}
     .listaj-hint{
-      display:block;text-align:center;
-      font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-      color:var(--muted);padding:2px 0 4px;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      font-family:var(--display);
+      font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--ink);
+      padding:8px 0 6px;
+      opacity:.7;
     }
+    .listaj-hint .strelica-l{display:inline-block;animation:svish-l 1.6s ease-in-out infinite}
     .listaj-hint .strelica{display:inline-block;animation:svish 1.6s ease-in-out infinite}
     @keyframes svish{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+    @keyframes svish-l{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
     footer{padding:8px 5vw;font-size:.66rem}
   }
   /* vrlo niski ekrani: makni opisni tekst da kartice dišu */
@@ -248,6 +272,62 @@
 </style>
 </head>
 <body>
+
+<svg class="prolivene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <!-- žuta (Osumnjičeni) — prolila se preko gornjeg desnog ruba -->
+  <g class="mrlja pluta-1" fill="#FFD233" opacity=".16">
+    <ellipse cx="1330" cy="40" rx="220" ry="120"/>
+    <ellipse cx="1180" cy="-10" rx="130" ry="70"/>
+    <ellipse cx="1265" cy="150" rx="60" ry="38"/>
+    <circle cx="1150" cy="130" r="12"/>
+    <circle cx="1105" cy="95" r="6"/>
+  </g>
+  <!-- kviz plava (Misteriozni) — lijevi rub -->
+  <g class="mrlja pluta-2" fill="#2A75BB" opacity=".13">
+    <ellipse cx="-60" cy="330" rx="190" ry="110"/>
+    <ellipse cx="90" cy="270" rx="80" ry="46"/>
+    <circle cx="190" cy="320" r="14"/>
+    <circle cx="225" cy="360" r="7"/>
+  </g>
+  <!-- dating coral (Ljubavni) — donji desni kut -->
+  <g class="mrlja" fill="#FD5068" opacity=".14">
+    <ellipse cx="1360" cy="880" rx="240" ry="130"/>
+    <ellipse cx="1180" cy="850" rx="90" ry="52"/>
+    <circle cx="1090" cy="810" r="13"/>
+    <circle cx="1050" cy="850" r="7"/>
+  </g>
+  <!-- corporate navy (Korporativni) — gornji lijevi kut, diskretno -->
+  <g class="mrlja" fill="#1B2A4A" opacity=".09">
+    <ellipse cx="-40" cy="-20" rx="200" ry="110"/>
+    <ellipse cx="130" cy="30" rx="70" ry="40"/>
+    <circle cx="215" cy="70" r="10"/>
+  </g>
+  <!-- neon cyan (Retro) — mali splash desno od sredine -->
+  <g class="mrlja pluta-2" fill="#29E6FF" opacity=".13">
+    <ellipse cx="1420" cy="470" rx="110" ry="64"/>
+    <ellipse cx="1330" cy="430" rx="42" ry="26"/>
+    <circle cx="1275" cy="465" r="9"/>
+    <circle cx="1245" cy="435" r="5"/>
+  </g>
+  <!-- filmsko zlato (Filmski) — donji lijevi kut -->
+  <g class="mrlja pluta-1" fill="#C9A24B" opacity=".12">
+    <ellipse cx="60" cy="900" rx="200" ry="110"/>
+    <ellipse cx="230" cy="860" rx="70" ry="42"/>
+    <circle cx="320" cy="830" r="11"/>
+    <circle cx="355" cy="865" r="6"/>
+  </g>
+  <!-- manje kapi u središnjem pojasu — vidljive i na mobitelu (slice crop) -->
+  <g class="mrlja pluta-2" fill="#FD5068" opacity=".12">
+    <ellipse cx="820" cy="-15" rx="110" ry="55"/>
+    <ellipse cx="730" cy="15" rx="45" ry="26"/>
+    <circle cx="665" cy="40" r="8"/>
+  </g>
+  <g class="mrlja pluta-1" fill="#2A75BB" opacity=".11">
+    <ellipse cx="620" cy="915" rx="120" ry="58"/>
+    <ellipse cx="720" cy="880" rx="46" ry="27"/>
+    <circle cx="785" cy="855" r="8"/>
+  </g>
+</svg>
 
 <header>
   <a class="logo" href="/">Imamo tipa<sup> *i tipkinje</sup></a>
@@ -270,7 +350,7 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. P350</span>
+        <span class="kod">Cod. P350 <span class="ulasci" data-broj="osumnjiceni"></span></span>
         <span class="ime">Osumnjičeni</span>
       </span>
     </a>
@@ -280,7 +360,7 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. 003Y</span>
+        <span class="kod">Cod. 003Y <span class="ulasci" data-broj="misteriozni"></span></span>
         <span class="ime">Misteriozni</span>
       </span>
     </a>
@@ -290,7 +370,7 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. 069B</span>
+        <span class="kod">Cod. 069B <span class="ulasci" data-broj="retro"></span></span>
         <span class="ime">Retro</span>
       </span>
     </a>
@@ -300,7 +380,7 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. 062R</span>
+        <span class="kod">Cod. 062R <span class="ulasci" data-broj="ljubavni"></span></span>
         <span class="ime">Ljubavni</span>
       </span>
     </a>
@@ -310,7 +390,7 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. 057V</span>
+        <span class="kod">Cod. 057V <span class="ulasci" data-broj="filmski"></span></span>
         <span class="ime">Filmski</span>
       </span>
     </a>
@@ -320,12 +400,12 @@
         <span class="udi">Uđi →</span>
       </span>
       <span class="etiketa">
-        <span class="kod">Cod. 121B</span>
+        <span class="kod">Cod. 121B <span class="ulasci" data-broj="korporativni"></span></span>
         <span class="ime">Korporativni</span>
       </span>
     </a>
   </nav>
-  <p class="listaj-hint">Listaj katalog <span class="strelica">→</span></p>
+  <p class="listaj-hint"><span class="strelica-l">←</span> Listaj katalog <span class="strelica">→</span></p>
 </div>
 
 <footer>
@@ -372,6 +452,36 @@
         '</svg>';
       el.insertBefore(span, el.firstChild);
     });
+  }
+
+  /* javni brojači ulazaka po stranicama */
+  function mnozinaUlaza(n){
+    var j = n % 10, r = n % 100;
+    if (j === 1 && r !== 11) return "ulazak";
+    if (j >= 2 && j <= 4 && (r < 12 || r > 14)) return "ulaska";
+    return "ulazaka";
+  }
+  fetch('/api/brojaci')
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(brojevi){
+      document.querySelectorAll('.ulasci[data-broj]').forEach(function(el){
+        var n = brojevi[el.dataset.broj];
+        if (typeof n !== 'number') return;
+        el.textContent = '· ' + n.toLocaleString('hr-HR') + ' ' + mnozinaUlaza(n);
+        el.classList.add('ima');
+      });
+    })
+    .catch(function(){ /* bez API-ja (lokalno) — samo ne prikazuj */ });
+
+  /* na mobitelu scrollaj na Retro karticu (3. od 6) da se vidi
+     da postoje kartice i lijevo i desno */
+  if (window.matchMedia('(max-width:760px)').matches) {
+    var retro = document.querySelector('.c-retro');
+    var katalog = document.querySelector('.katalog');
+    if (retro && katalog) {
+      /* instant scroll bez animacije — korisnik ne treba vidjeti pomak */
+      retro.scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' });
+    }
   }
 
   document.getElementById('sudbina').addEventListener('click', function(){
