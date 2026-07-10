@@ -81,26 +81,17 @@
   }
   .intro-desno{
     display:flex;flex-direction:column;
+    align-items:flex-start;
     gap:10px;
   }
-  .intro-desno p{font-size:1.1rem;color:var(--muted);line-height:1.5}
+  .intro-desno p{font-size:1.43rem;color:var(--muted);line-height:1.5}
   .sudbina{
     display:inline-block;margin-top:0;
-    font-size:.88rem;font-weight:600;color:var(--ink);
+    font-size:1.23rem;font-weight:600;color:var(--ink);
     border-bottom:1.5px solid var(--ink);
     padding:0 0 2px;cursor:pointer;background:none;
     border-top:none;border-left:none;border-right:none;
     font-family:var(--body);white-space:nowrap;
-    /* skriveno dok se ne pokaže nakon 20s */
-    opacity:0;transform:translateY(6px);
-    transition:opacity .6s ease, transform .6s ease;
-    pointer-events:none;
-    visibility:hidden;
-  }
-  .sudbina.vidljiv{
-    opacity:1;transform:translateY(0);
-    pointer-events:auto;
-    visibility:visible;
   }
   .sudbina:hover{opacity:.7}
   .sudbina .kocka{display:inline-block;margin-right:.35em}
@@ -495,23 +486,7 @@
     }
   }
 
-  /* "Neodlučan? Prepusti sudbini" — pojavi se tek nakon 20s
-     ako korisnik nije kliknuo nijednu karticu.
-     Ako je ikad bio na nekoj stranici (cookie), ne prikazuj uopće. */
-  var sudbBtn = document.getElementById('sudbina');
-  var vecBioNaStranici = /ulaz_(osumnjiceni|misteriozni|retro|ljubavni|filmski|korporativni)=1/.test(document.cookie);
-
-  if (!vecBioNaStranici) {
-    var kliknuo = false;
-    document.querySelectorAll('.katalog .chip').forEach(function(c){
-      c.addEventListener('click', function(){ kliknuo = true; });
-    });
-    setTimeout(function(){
-      if (!kliknuo) sudbBtn.classList.add('vidljiv');
-    }, 20000);
-  }
-
-  sudbBtn.addEventListener('click', function(){
+  document.getElementById('sudbina').addEventListener('click', function(){
     var chipovi = document.querySelectorAll('.katalog .chip');
     var izbor = chipovi[Math.floor(Math.random() * chipovi.length)];
     var i = 0, koraka = 10;
