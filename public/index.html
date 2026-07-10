@@ -63,8 +63,8 @@
   /* ---------- intro ---------- */
   .intro{
     padding:clamp(28px,5.5vh,64px) 4vw clamp(18px,3vh,36px);
-    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-    gap:14px 32px;
+    display:flex;flex-direction:column;
+    gap:12px;
   }
   h1{
     font-family:var(--display);font-weight:800;
@@ -79,15 +79,28 @@
     border-radius:.12em;
     white-space:nowrap;
   }
-  .intro-desno{max-width:34ch;padding-bottom:.4em}
-  .intro-desno p{font-size:.95rem;color:var(--muted);line-height:1.55}
+  .intro-desno{
+    display:flex;flex-direction:column;
+    gap:10px;
+  }
+  .intro-desno p{font-size:1.1rem;color:var(--muted);line-height:1.5}
   .sudbina{
-    display:inline-block;margin-top:10px;
+    display:inline-block;margin-top:0;
     font-size:.88rem;font-weight:600;color:var(--ink);
     border-bottom:1.5px solid var(--ink);
     padding:0 0 2px;cursor:pointer;background:none;
     border-top:none;border-left:none;border-right:none;
-    font-family:var(--body);
+    font-family:var(--body);white-space:nowrap;
+    /* skriveno dok se ne pokaže nakon 20s */
+    opacity:0;transform:translateY(6px);
+    transition:opacity .6s ease, transform .6s ease;
+    pointer-events:none;
+    visibility:hidden;
+  }
+  .sudbina.vidljiv{
+    opacity:1;transform:translateY(0);
+    pointer-events:auto;
+    visibility:visible;
   }
   .sudbina:hover{opacity:.7}
   .sudbina .kocka{display:inline-block;margin-right:.35em}
@@ -201,13 +214,11 @@
     header{padding:12px 5vw 10px}
     .intro{
       padding:14px 5vw 8px;
-      gap:8px;
-      align-items:flex-start;flex-direction:column;
+      gap:6px;
     }
     h1{font-size:clamp(1.35rem,6.4vw,1.9rem)}
-    .intro-desno{max-width:none;padding-bottom:0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
     .intro-desno p{font-size:.82rem;line-height:1.4}
-    .sudbina{margin-top:0;font-size:.82rem}
+    .sudbina{font-size:.82rem}
     .katalog-omot{
       flex:1;min-height:0;
       display:flex;flex-direction:column;
@@ -484,7 +495,23 @@
     }
   }
 
-  document.getElementById('sudbina').addEventListener('click', function(){
+  /* "Neodlučan? Prepusti sudbini" — pojavi se tek nakon 20s
+     ako korisnik nije kliknuo nijednu karticu.
+     Ako je ikad bio na nekoj stranici (cookie), ne prikazuj uopće. */
+  var sudbBtn = document.getElementById('sudbina');
+  var vecBioNaStranici = /ulaz_(osumnjiceni|misteriozni|retro|ljubavni|filmski|korporativni)=1/.test(document.cookie);
+
+  if (!vecBioNaStranici) {
+    var kliknuo = false;
+    document.querySelectorAll('.katalog .chip').forEach(function(c){
+      c.addEventListener('click', function(){ kliknuo = true; });
+    });
+    setTimeout(function(){
+      if (!kliknuo) sudbBtn.classList.add('vidljiv');
+    }, 20000);
+  }
+
+  sudbBtn.addEventListener('click', function(){
     var chipovi = document.querySelectorAll('.katalog .chip');
     var izbor = chipovi[Math.floor(Math.random() * chipovi.length)];
     var i = 0, koraka = 10;
