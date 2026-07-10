@@ -1,3 +1,10 @@
 name = "imamotipa"
 compatibility_date = "2024-09-25"
 pages_build_output_dir = "public"
+
+# Brojač ulazaka — Cloudflare KV
+# 1) napravi namespace:  npx wrangler kv namespace create BROJACI
+# 2) zalijepi dobiveni "id" ispod umjesto placeholdera
+[[kv_namespaces]]
+binding = "BROJACI"
+id = "b3f86f24c083405fb4b2cc7c5ebb0f29"
